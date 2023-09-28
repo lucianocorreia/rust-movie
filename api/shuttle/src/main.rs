@@ -5,6 +5,7 @@ use actix_web::{
 use shuttle_actix_web::ShuttleActixWeb;
 use shuttle_runtime::CustomError;
 use sqlx::{Executor, PgPool};
+use tracing::info;
 
 #[get("/")]
 async fn hello_world() -> &'static str {
@@ -13,6 +14,7 @@ async fn hello_world() -> &'static str {
 
 #[get("/version")]
 async fn version(db: Data<PgPool>) -> String {
+    info!("Getting version");
     let result = sqlx::query_scalar("SELECT version()")
         .fetch_one(db.get_ref())
         .await;
