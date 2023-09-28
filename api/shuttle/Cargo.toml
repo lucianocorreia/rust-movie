@@ -12,3 +12,4 @@ tokio = "1.26.0"
 shuttle-shared-db = { version = "0.27.0", features = ["postgres"] }
 sqlx = "0.7.2"
 tracing = "0.1.37"
+api-lib = { path = "../lib" }
